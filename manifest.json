@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+  
+    "name": "newTab",
+    "version": "0.1.1",
+  
+    "description": "Productivity tool for keeping track of time spent on tasks",
+  
+    "author": "Keith Wong",
+  
+    "browser_action": {
+      "default_icon": "assets/imgs/icon.png",
+      "default_popup": "index.html",
+      "default_title": "Captain's Log"
+    },
+  
+    "icons": {
+    
+    },
+  
+    "homepage_url": "http://keithwong.info",
+    "permissions": ["activeTab","storage"]
+  }
