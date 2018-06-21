@@ -88,6 +88,17 @@ Task.prototype.logAlottedTime = function(time) {
     this.timeAlotted += time;
 }
 
+Task.prototype.getAlottedTime = function() {
+    let ms = this.timeAlotted;
+    let hours = ms / 3600000;
+    ms = ms % 3600000;
+    let minutes = ms / 60000;
+    ms = ms % 60000;
+    let seconds = ms / 1000;
+
+    return "" + hours + "h " + minutes + "m " + seconds + "s";
+};
+
 Task.prototype.addLog = function() {
     this.logNodes.unshift(new LogNode);
 
