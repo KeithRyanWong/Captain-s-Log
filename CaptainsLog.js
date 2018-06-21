@@ -27,7 +27,18 @@ CaptainsLog.prototype.getTaskTitles = function() {
 };
 
 CaptainsLog.prototype.setActiveTask = function(title) {
-    // Should update priority of existing task or create a new one
+    let idx = this.tasks.findIndex((task) => {
+        task.title = title;
+    });
+
+    if (idx > -1) {
+        let task = this.tasks[idx];
+        this.tasks = [task].concat(this.tasks.splice(idx, 1));
+    } else {
+        alert(title + " does not exist.");
+    }
+
+    this.save();
 };
 
 CaptainsLog.prototype.addTask = function(title) {
@@ -44,11 +55,13 @@ CaptainsLog.prototype.clearLogs = function() {
 };
 
 CaptainsLog.prototype.appendText = function(txt) {
-    this.tasks[0].appendText(txt)
+    this.tasks[0].appendText(txt);
+    this.save();
 };
 
 CaptainsLog.prototype.logTime = function() {
     this.tasks[0].logTime();
+    this.save();
 };
 
 function Task(title) {
