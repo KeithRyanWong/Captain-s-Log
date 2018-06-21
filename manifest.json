@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
   
-    "name": "newTab",
+    "name": "Captain's Log",
     "version": "0.1.1",
   
     "description": "Productivity tool for keeping track of time spent on tasks",
