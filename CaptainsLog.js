@@ -1,19 +1,19 @@
-function CaptainsLog () {
+export default function CaptainsLog () {
     this.tasks = [];
 }
 //May have to save and load on each window click. ie switching browser windows
-CaptainsLog.prototype.load = function() {
-    let loadedTasks = [];
-    chrome.storage.sync.get((storage) => {
-        loadedTasks = storage[tasks] || [];
-    });
-    this.tasks = loadedTasks;
-};
+// CaptainsLog.prototype.load = function() {
+//     let loadedTasks = [];
+//     chrome.storage.sync.get((storage) => {
+//         loadedTasks = storage[tasks] || [];
+//     });
+//     this.tasks = loadedTasks;
+// };
 
 CaptainsLog.prototype.save = function() {
     chrome.storage.sync.set({
-        'tasks': this.tasks
-      });
+        'CaptainsLog': this
+    });
 };
 
 CaptainsLog.prototype.getTask = function(title) {
