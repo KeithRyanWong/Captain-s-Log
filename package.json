@@ -1,0 +1,26 @@
+{
+  "name": "Captain-s-Log",
+  "version": "1.0.0",
+  "description": "Tool for logging time and notes",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeithRyanWong/Captain-s-Log.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeithRyanWong/Captain-s-Log/issues"
+  },
+  "homepage": "https://github.com/KeithRyanWong/Captain-s-Log#readme",
+  "devDependencies": {
+    "jest": "^23.1.0"
+  }
+}
