@@ -69,8 +69,41 @@ describe("Task", () => {
         });
     });
 
-    xdescribe("#logTime", () => {
-        xit("")
+    describe("#logTime", () => {
+        describe('when logging a start time', () => {
+            it("increases the log by 1", () => {
+                let task = new Task("A whole new world");
+                let len = task.timeLog.length;
+                task.logTime();
+
+                expect(task.timeLog.length).toBe(len + 1);
+            });
+        });
+
+        describe('when logging an end time', () => {
+            it("increases the log by 1", () => {
+                let task = new Task("A whole new world");
+                let len = task.timeLog.length;
+                task.logTime();
+                task.logTime();
+
+                expect(task.timeLog.length).toBe(len + 2);
+            });
+
+            it("updates total alotted time", () => {
+                let task = new Task("For you and me");
+                let spy = spyOn(task, 'logAlottedTime');
+
+                let time1 = Date.now();
+                task.logTime();
+                
+                while(Date.now() - time1 < 100){}
+
+                let time2 = Date.now();
+                task.logTime()
+                expect(spy).toHaveBeenCalledWith(time2 - time1);
+            });
+        });
     });
     
     xdescribe("#logAlottedTime", () => {

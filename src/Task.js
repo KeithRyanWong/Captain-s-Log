@@ -19,14 +19,14 @@ Task.prototype.updateTitle = function(title) {
 };
 
 Task.prototype.logTime = function() {
-    // let time = Date.now();
+    let time = Date.now();
 
-    // if (this.timeLog.length % 2 != 0) {
-    //     let time2 = this.timeLog[this.timeLog.length - 1];
-    //     this.logAlottedTime(time - time2);
-    // }
+    if (this.timeLog.length % 2 != 0) {
+        let time2 = this.timeLog[this.timeLog.length - 1];
+        this.logAlottedTime(time - time2);
+    }
 
-    // this.timeLog.push(time);
+    this.timeLog.push(time);
 }
 
 Task.prototype.logAlottedTime = function(time) {
