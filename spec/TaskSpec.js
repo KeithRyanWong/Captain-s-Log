@@ -1,4 +1,5 @@
 import Task from '../src/Task.js';
+import LogNode from '../src/LogNode.js';
 
 describe("Task", () => {
     describe("#Task", () => {
@@ -26,7 +27,7 @@ describe("Task", () => {
         });
         
         it("starts with no time alotted", () => {
-            expect(task.timeAlotted).toBe(0);
+            expect(task.alottedTime).toBe(0);
         });
 
         it("starts with no logs", () => {
@@ -103,26 +104,85 @@ describe("Task", () => {
                 task.logTime()
                 expect(spy).toHaveBeenCalledWith(time2 - time1);
             });
+
+            xit("updates the last time updated", () => {
+
+            });
         });
     });
     
-    xdescribe("#logAlottedTime", () => {
+    describe("#logAlottedTime", () => {
+        let task = new Task("Test logAlottedTime");
+        it("updates the alottedTime with the amount passed in", () => {
+            task.logAlottedTime(300);
+            expect(task.alottedTime).toBe(300);
 
+            task.logAlottedTime(450)
+            expect(task.alottedTime).toBe(750);
+        });
     });
     
-    xdescribe("#getAlottedTime", () => {
+    describe("#getAlottedTime", () => {
+        let task = new Task("test getAlottedTime");
+        it("displays time in correct format", () => {
+            task.alottedTime = 21600000 + 2820000 + 12000;//6h 47m 12s
+            expect(task.getAlottedTime()).toBe('6h 47m 12s');
 
+            task.alottedTime = 259200000; //72h
+            expect(task.getAlottedTime()).toBe('72h 0m 0s')
+        });
     });
     
-    xdescribe("#addLog", () => {
+    describe("#addLog", () => {
+        let task;
 
+        beforeEach(() => {
+            task = new Task('Time to add logs');
+        })
+        
+        function LogNode() {
+            
+        }
+
+        it('keeps track of the logs', () => {
+            let len = task.logNodes.length;
+            task.addLog()
+            expect(task.logNodes.length).toBe(len + 1);
+        })
+
+        it('keeps logs in order', () => {
+            task.addLog();
+            let log1 = task.logNodes[task.logNodes.length - 1];
+            task.addLog();
+            let log2 = task.logNodes[task.logNodes.length - 2];
+            task.addLog();
+            expect(log1).not.toBe(log2);
+            expect(task.logNodes[1]).toBe(log2);
+            expect(task.logNodes[2]).toBe(log1);
+        });
+
+        xit("updates the last time updated", () => {
+                
+        });
     });
 
     xdescribe("#appendText", () => {
+        it("calls LogNode's #appendText", () => {
 
+        });
+
+        it("updates the last time updated", () => {
+            
+        });
     });
 
     xdescribe("#updateText", () => {
+        it("calls LogNode's #updateText", () => {
 
+        });
+
+        it("updates the last time updated", () => {
+            
+        });
     });
 })
